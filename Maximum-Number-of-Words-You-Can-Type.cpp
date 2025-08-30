@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int canBeTypedWords(string text, string brokenLetters) {
+        vector<int> ch(26,0);
+        for(char c:brokenLetters)
+        {
+            ch[c-'a']=1;
+        }
+        int count=0, ans=0;
+        for(int i=0;i<text.length();i++)
+        {
+            if(text[i]==' ')
+            {
+                if(count==0) ans++;
+                count=0;
+            }
+            else if(ch[text[i]-'a']==1) count++;
+        }
+        if(count==0) ans++;
+        return ans;
+    }
+};
